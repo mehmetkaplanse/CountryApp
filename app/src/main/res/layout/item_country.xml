@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="country"
+            type="com.example.countrieskotlin.model.Country" />
+        <variable
+            name="listener"
+            type="com.example.countrieskotlin.adapter.CountryClickListener" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="horizontal"
+    android:onClick="@{listener::onCountryClicked}"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/countryUuidTextInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{String.valueOf(country.uuid)}"
+        android:visibility="gone" />
+
+
+    <ImageView
+        android:id="@+id/imgCountryFeed"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@color/black"
+        android:layout_weight="2"
+        android:downloadUrl="@{country.imageUrl}"
+        android:scaleType="centerCrop"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@{country.countryName}"/>
+
+        <TextView
+            android:id="@+id/region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{country.countryRegion}"/>
+
+    </LinearLayout>
+</LinearLayout>
+</layout>
